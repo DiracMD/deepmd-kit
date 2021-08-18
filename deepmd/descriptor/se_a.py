@@ -599,9 +599,9 @@ class DescrptSeA ():
                 raise RuntimeError('compression of type embedded descriptor is not supported at the moment')
         # with (natom x nei_type_i) x out_size
         if self.compress and (not is_exclude):
-          info = [self.lower, self.upper, self.upper * self.table_config[0], self.table_config[1], self.table_config[2], self.table_config[3]]
-          if self.type_one_side:
-            net = 'filter_-1_net_' + str(type_i)
+            info = [self.lower, self.upper, self.upper * self.table_config[0], self.table_config[1], self.table_config[2], self.table_config[3]]
+            if self.type_one_side:
+                net = 'filter_-1_net_' + str(type_i)
           else:
             net = 'filter_' + str(type_input) + '_net_' + str(type_i)
           return op_module.tabulate_fusion(self.table.data[net].astype(self.filter_np_precision), info, xyz_scatter, tf.reshape(inputs_i, [natom, shape_i[1]//4, 4]), last_layer_size = outputs_size[-1])  
